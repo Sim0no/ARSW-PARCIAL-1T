@@ -31,4 +31,9 @@ public class CovidAggregateServiceStub implements ICovidAggregateService{
         persistencia.upsertPersonWithMultipleTests(id, type);
 
     }
+
+    @Override
+    public List<Result> getResultByDate(String date) {
+        return persistencia.getResultByDate(date);
+    }
 }

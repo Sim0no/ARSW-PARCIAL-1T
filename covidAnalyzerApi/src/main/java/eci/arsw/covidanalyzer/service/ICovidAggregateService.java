@@ -32,6 +32,6 @@ public interface ICovidAggregateService {
      * @param type
      */
     void upsertPersonWithMultipleTests(UUID id, ResultType type);
-
+    public List<Result> getResultByDate(String date);
 
 }

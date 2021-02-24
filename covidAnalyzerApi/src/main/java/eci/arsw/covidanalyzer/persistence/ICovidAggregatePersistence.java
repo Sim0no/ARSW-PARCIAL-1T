@@ -31,4 +31,5 @@ public interface ICovidAggregatePersistence {
      * @param type
      */
     void upsertPersonWithMultipleTests(UUID id, ResultType type);
+    public List<Result> getResultByDate(String date);
 }

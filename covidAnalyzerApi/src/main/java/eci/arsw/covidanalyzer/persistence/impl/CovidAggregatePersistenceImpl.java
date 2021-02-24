@@ -54,6 +54,7 @@ public class CovidAggregatePersistenceImpl implements ICovidAggregatePersistence
             if(r.getId().equals(id)){
                 flag = false;
                 r.setResultType(type);
+                r.setVecesPrueba(r.getVecesPrueba()+1);
             }
 
         }
@@ -66,4 +67,15 @@ public class CovidAggregatePersistenceImpl implements ICovidAggregatePersistence
 
 
     }
+    public List<Result> getResultByDate(String date) {
+        ArrayList<Result> aux = new ArrayList<Result>();
+        for (Result r: resultados) {
+            if(r.getTestDate().equals(date)){
+                aux.add(r);
+            }
+
+        }
+        return aux;
+    }
+
 }

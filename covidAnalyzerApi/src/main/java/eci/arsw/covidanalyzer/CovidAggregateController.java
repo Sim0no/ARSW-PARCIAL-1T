@@ -85,13 +85,21 @@ public class CovidAggregateController {
     }
 
 
-    //TODO: Implemente el método.
+    //PUT
 
-    @PutMapping("/covid/result/persona/{id}")
+    @PutMapping("/covid/result/persona/{uuid}")
     public ResponseEntity<?> savePersonaWithMultipleTests(@PathVariable UUID uuid, @RequestBody ResultType result) {
         //TODO
         covidAggregateService.upsertPersonWithMultipleTests(uuid,result);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    //BONO NUMERO 1
+    @GetMapping("/covid/result/{date}")
+    public ResponseEntity<?> getTrueNegativeResult(@PathVariable String date) {
+        //TODO
+        return new ResponseEntity<>(covidAggregateService.getResultByDate(date),HttpStatus.OK);
+    }
+
     
 }
