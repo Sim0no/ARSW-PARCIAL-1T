@@ -27,7 +27,6 @@ public class CovidAnalizerThread extends Thread{
     public void run() {
         for (int i = a; i < b; i++) {
             List<Result> results = testReader.readResultsFromFile(archivos.get(i));
-            archivosProcesados.incrementAndGet();
             for (Result result : results) {
                 while (!trabajando.get()){
                     synchronized (this){
@@ -40,7 +39,7 @@ public class CovidAnalizerThread extends Thread{
                 }
                 rsltAnalizer.addResult(result);
             }
-
+            archivosProcesados.incrementAndGet();
 
         }
     }

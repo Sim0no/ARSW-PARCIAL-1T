@@ -75,17 +75,42 @@ public class CovidAnalyzerTool {
      */
     public static void main(String... args) throws Exception {
         CovidAnalyzerTool covidAnalyzerTool = new CovidAnalyzerTool();
-        covidAnalyzerTool.processResultData(10);
-        while (true) {
+        covidAnalyzerTool.processResultData(22);
+        boolean guarda = true;
+        while (guarda) {
+            //Niego la guarda
+            guarda = false;
             Scanner scanner = new Scanner(System.in);
             String line = scanner.nextLine();
             if (line.contains("exit"))
                 break;
+            for (CovidAnalizerThread c: covidAnalyzerTool.hilos) {
+                c.dormir();
+
+            }
             String message = "Processed %d out of %d files.\nFound %d positive people:\n%s";
             Set<Result> positivePeople = covidAnalyzerTool.getPositivePeople();
             String affectedPeople = positivePeople.stream().map(Result::toString).reduce("", (s1, s2) -> s1 + "\n" + s2);
             message = String.format(message, covidAnalyzerTool.amountOfFilesProcessed.get(), covidAnalyzerTool.amountOfFilesTotal, positivePeople.size(), affectedPeople);
             System.out.println(message);
+            System.out.println("Hilos dormidos");
+            scanner = new Scanner(System.in);
+            line = scanner.nextLine();
+
+            for (CovidAnalizerThread c: covidAnalyzerTool.hilos) {
+                c.despertar();
+
+            }
+            System.out.println("Working...");
+            System.out.println("Hilos despiertos");
+            for (CovidAnalizerThread c: covidAnalyzerTool.hilos) {
+                if (c.isAlive()){
+
+                    guarda = true;
+                    break;
+                }
+
+            }
         }
     }
 
