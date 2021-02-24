@@ -1,4 +1,4 @@
-package eci.arsw.covidanalyzer.service;
+package eci.arsw.covidanalyzer.persistence;
 
 import eci.arsw.covidanalyzer.exceptions.CovidAggregateException;
 import eci.arsw.covidanalyzer.model.Result;
@@ -7,8 +7,7 @@ import eci.arsw.covidanalyzer.model.ResultType;
 import java.util.List;
 import java.util.UUID;
 
-public interface ICovidAggregateService {
-
+public interface ICovidAggregatePersistence {
     /**
      * Add a new result into the specified result type storage.
      *
@@ -27,11 +26,9 @@ public interface ICovidAggregateService {
     List<Result> getResult(ResultType type);
 
     /**
-     * 
+     *
      * @param id
      * @param type
      */
     void upsertPersonWithMultipleTests(UUID id, ResultType type);
-
-
 }
