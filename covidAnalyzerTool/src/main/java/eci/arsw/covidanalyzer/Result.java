@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public class Result {
 
+    private  int vecesPrueba;
     //<editor-fold desc="properties">
     private UUID id;
     private String firstName;
@@ -14,10 +15,50 @@ public class Result {
 
     private String testString;
     private boolean result;
+    private ResultType resultType;
     private double testSpecifity;
     //</editor-fold>
 
     //<editor-fold desc="getters">
+    public  Result(){}
+    public Result(UUID id, String firstName, String lastName, String gender, String email, String birthString, String testString, boolean result, double testSpecifity) {
+
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.email = email;
+        this.birthString = birthString;
+        this.testString = testString;
+        this.result = result;
+        this.testSpecifity = testSpecifity;
+        this.vecesPrueba = 1;
+    }
+
+    public int getVecesPrueba() {
+        return vecesPrueba;
+    }
+
+    public void setVecesPrueba(int vecesPrueba) {
+        this.vecesPrueba = vecesPrueba;
+    }
+
+    public String getBirthString() {
+        return birthString;
+    }
+
+    public void setBirthString(String birthString) {
+        this.birthString = birthString;
+    }
+
+    public String getTestString() {
+        return testString;
+    }
+
+    public void setTestString(String testString) {
+        this.testString = testString;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -52,6 +93,10 @@ public class Result {
 
     public double getTestSpecifity() {
         return testSpecifity;
+    }
+
+    public ResultType getResultType() {
+        return resultType;
     }
     //</editor-fold>
 
@@ -90,6 +135,9 @@ public class Result {
 
     public void setTestSpecifity(double testSpecifity) {
         this.testSpecifity = testSpecifity;
+    }
+    public void setResultType(ResultType resultType){
+        this.resultType = resultType;
     }
     //</editor-fold>
 

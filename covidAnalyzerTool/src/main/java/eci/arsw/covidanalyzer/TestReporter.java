@@ -22,6 +22,7 @@ public class TestReporter {
     private static ObjectMapper mapper = new ObjectMapper();
 
     public static void report(Result result, int type) {
+        System.out.println(result);
 
         String complement = "/";
         switch (type) {

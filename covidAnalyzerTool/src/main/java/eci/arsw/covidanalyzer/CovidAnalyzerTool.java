@@ -75,7 +75,7 @@ public class CovidAnalyzerTool {
      */
     public static void main(String... args) throws Exception {
         CovidAnalyzerTool covidAnalyzerTool = new CovidAnalyzerTool();
-        covidAnalyzerTool.processResultData(22);
+        covidAnalyzerTool.processResultData(10);
         boolean guarda = true;
         while (guarda) {
             //Niego la guarda
